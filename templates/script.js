@@ -55,7 +55,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const botResponse = data.response;
 
             addMessageToWindow(botResponse, 'bot');
-            speak(botResponse); // Read the bot's response aloud
+            
+            // speak(botResponse); // Read the bot's response aloud
         } catch (error) {
             console.error('Error fetching bot response:', error);
             const errorMessage = "Sorry, I'm having trouble connecting to my brain right now. Please try again later.";

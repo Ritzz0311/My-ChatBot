@@ -7,8 +7,8 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS
 
 # --- IMPORTANT: PASTE YOUR API KEYS HERE ---
-GUARDIAN_API_KEY = "446e78ea-63c2-4c7d-ab57-e263de9567a2"  # Replace with your Guardian API key
-OPENWEATHERMAP_API_KEY = "85a0089efbc7264efef6b170e25f555e" # Replace with your OpenWeatherMap API key
+GUARDIAN_API_KEY = "446e78ea-63c2-4c7d-ab57-e263de9567a2" 
+OPENWEATHERMAP_API_KEY = "85a0089efbc7264efef6b170e25f555e"
 
 # Initialize Flask App
 app = Flask(__name__)
