@@ -70,13 +70,13 @@ pygame==2.6.1
 PyJWT==2.10.1
 pyogrio==0.10.0
 pyparsing==3.2.1
-
+pypiwin32==223
 pyproj==3.7.0
 pyproject_hooks==1.2.0
 python-dateutil==2.9.0.post0
 pyttsx3==2.98
 pytz==2025.1
-pywin32==310
+
 pyzbar==0.1.9
 rasterio==1.4.3
 referencing==0.36.2
