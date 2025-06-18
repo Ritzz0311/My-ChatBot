@@ -1,0 +1,16 @@
+# render.yaml
+# This file tells Render how to build and run your project.
+
+services:
+  # The Python Backend Service
+  - type: web
+    name: chatbot-backend
+    env: python
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "gunicorn app:app"
+
+  # The Static Frontend Service
+  - type: static
+    name: chatbot-frontend
+    # This tells Render to serve files from the root directory
+    publishPath: "."
