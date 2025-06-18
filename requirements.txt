@@ -70,7 +70,7 @@ pygame==2.6.1
 PyJWT==2.10.1
 pyogrio==0.10.0
 pyparsing==3.2.1
-pypiwin32==223
+
 pyproj==3.7.0
 pyproject_hooks==1.2.0
 python-dateutil==2.9.0.post0
