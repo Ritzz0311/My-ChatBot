@@ -1,5 +1,3 @@
-# app.py
-
 import re
 import requests
 from datetime import datetime
@@ -7,19 +5,16 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS
 
 # --- IMPORTANT: PASTE YOUR API KEYS HERE ---
-GUARDIAN_API_KEY = "446e78ea-63c2-4c7d-ab57-e263de9567a2" 
+GUARDIAN_API_KEY = "446e78ea-63c2-4c7d-ab57-e263de9567a2"
 OPENWEATHERMAP_API_KEY = "85a0089efbc7264efef6b170e25f555e"
 
-# Initialize Flask App
 app = Flask(__name__)
-CORS(app)  # This enables Cross-Origin Resource Sharing
+CORS(app)
 
-# Guardian API configuration
 GUARDIAN_API_URL = "https://content.guardianapis.com/search"
 
 class AdvancedChatbot:
     def __init__(self):
-        # Predefined rules and responses
         self.responses = {
             r"hello|hi|hey": "Hello! How can I help you?",
             r"how are you|how's it going|how do you do": "I'm just a bot, but I'm doing great! How about you?",
@@ -39,7 +34,6 @@ class AdvancedChatbot:
             match = re.search(pattern, user_input)
             if match:
                 if callable(response):
-                    # Pass the match object to the handler function
                     return response(match)
                 return response
         return self.responses["default"]
@@ -99,10 +93,18 @@ class AdvancedChatbot:
             print(f"Error fetching news: {e}")
             return "Sorry, there was an issue fetching the news."
 
-# Create a single chatbot instance
 chatbot = AdvancedChatbot()
 
-# Define the API endpoint for the chatbot
+@app.route("/", methods=["GET"])
+def index():
+    return """
+    <h2>🤖 Welcome to My Chatbot!</h2>
+    <p>Send a POST request to <code>/chat</code> with JSON like:</p>
+    <pre>{
+  "message": "hello"
+}</pre>
+    """
+
 @app.route("/chat", methods=["POST"])
 def chat():
     user_input = request.json.get("message")
@@ -112,6 +114,5 @@ def chat():
     response = chatbot.get_response(user_input)
     return jsonify({"response": response})
 
-# Run the app
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=True, host="0.0.0.0")
