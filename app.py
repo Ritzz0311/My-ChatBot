@@ -3,10 +3,13 @@ import requests
 from datetime import datetime
 from flask import Flask, request, jsonify
 from flask_cors import CORS
+from dotenv import load_dotenv
 
-# --- IMPORTANT: PASTE YOUR API KEYS HERE ---
-GUARDIAN_API_KEY = "446e78ea-63c2-4c7d-ab57-e263de9567a2"
-OPENWEATHERMAP_API_KEY = "85a0089efbc7264efef6b170e25f555e"
+# Load environment variables from .env
+load_dotenv()
+
+GUARDIAN_API_KEY = os.getenv("GUARDIAN_API_KEY")
+OPENWEATHERMAP_API_KEY = os.getenv("OPENWEATHERMAP_API_KEY")
 
 app = Flask(__name__)
 CORS(app)
