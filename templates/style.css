@@ -1,7 +1,10 @@
 /* style.css */
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-    background-color: #f0f2f5;
+    /* background-color: #4974b4; */
+    /* background-image: url('https://i.pinimg.com/736x/7a/9e/fe/7a9efe5da2fb75e6896b5837611ec42a.jpg'); */
+    background-image: url(unnamed.png);
+    background-size: cover;
     display: flex;
     justify-content: center;
     align-items: center;
