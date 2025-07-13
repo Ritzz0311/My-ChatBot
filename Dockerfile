@@ -1,4 +1,4 @@
-# Use the official Python 3.11 slim image (matches your requirements)
+# Use the official Python 3.11 slim image
 FROM python:3.11-slim
 
 # Prevent Python from writing .pyc files and buffering stdout/stderr
@@ -8,7 +8,7 @@ ENV PYTHONUNBUFFERED=1
 # Set the working directory
 WORKDIR /app
 
-# Install system dependencies required for many Python packages
+# Install system dependencies required for your Python packages
 RUN apt-get update && apt-get install -y --no-install-recommends \
     build-essential \
     gcc \
@@ -19,12 +19,12 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libxrender-dev \
     libpq-dev \
     libsndfile1 \
-    libasound2-dev \
+    portaudio19-dev \
     ffmpeg \
     git \
     && rm -rf /var/lib/apt/lists/*
 
-# Copy requirements.txt first for better Docker cache usage
+# Copy requirements.txt first for Docker cache optimization
 COPY requirements.txt /app/
 
 # Upgrade pip and install Python dependencies
