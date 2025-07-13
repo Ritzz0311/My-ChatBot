@@ -1,6 +1,8 @@
 import re
 import os
 import requests
+from dotenv import load_dotenv
+
 from datetime import datetime
 from flask import Flask, request, jsonify
 from flask_cors import CORS
