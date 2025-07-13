@@ -1,39 +1,34 @@
-# Use stable Python base image
-FROM python:3.10-slim
+# Use the official Python base image
+FROM python:3.11-slim
 
-# Set work directory
+# Set environment variables
+ENV PYTHONDONTWRITEBYTECODE=1
+ENV PYTHONUNBUFFERED=1
+
+# Set the working directory
 WORKDIR /app
 
-# Install system dependencies (for packages like opencv, pyproj, rasterio, etc.)
+# Install system dependencies
 RUN apt-get update && apt-get install -y \
     build-essential \
-    libgl1 \
-    libglib2.0-0 \
-    libsm6 \
-    libxext6 \
-    libxrender1 \
-    libffi-dev \
-    libpq-dev \
-    python3-dev \
-    python3-pip \
-    ffmpeg \
-    portaudio19-dev \
     && rm -rf /var/lib/apt/lists/*
 
-# Copy only requirements file first for caching
-COPY requirements.txt .
-
-# Remove audioop-lts (Python 3.13+ only)
-RUN sed -i '/audioop-lts/d' requirements.txt
+# Copy requirements (create requirements.txt as shown below)
+COPY requirements.txt /app/
 
 # Install Python dependencies
+RUN pip install --upgrade pip
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy the entire application
-COPY . .
+# Copy the application code
+COPY . /app/
 
 # Expose the Flask port
 EXPOSE 5000
 
-# Run with Gunicorn for production (you can change app:app if your file is named differently)
-CMD ["gunicorn", "-b", "0.0.0.0:5000", "app:app"]
+# Set environment variables for Flask
+ENV FLASK_APP=app.py
+ENV FLASK_RUN_HOST=0.0.0.0
+
+# Run the Flask app
+CMD ["flask", "run"]
