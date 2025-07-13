@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const micBtn = document.getElementById('mic-btn');
     const chatWindow = document.getElementById('chat-window');
 
-    const flaskApiUrl = 'http://127.0.0.1:5000/chat';
+    const flaskApiUrl = 'https://chatbot-back.up.railway.app/chat';
 
     // --- Event Listeners ---
     sendBtn.addEventListener('click', sendMessage);
