@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     micBtn.addEventListener('click', toggleSpeechRecognition);
 
-    addMessageToWindow({ type: 'text', content: "Hello! I'm your friendly chatbot. How can I assist you today?" }, 'bot');
+    addMessageToWindow({ type: 'text', content: "Hello! I'm your Nexuma . How can I assist you today?" }, 'bot');
 
     // --- Functions ---
     function sendMessage() {
