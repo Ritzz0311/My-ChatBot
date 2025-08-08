@@ -33,7 +33,7 @@ class AdvancedChatbot:
         self.responses = {
             r"hello|hi|hey": "Hello! How can I help you?",
             r"how are you|how's it going|how do you do": "I'm just a bot, but I'm doing great! How about you?",
-            r"what's your name|who are you": "I'm an advanced chatbot. You can call me ChatBot!",
+            r"what's your name|who are you": "I'm an Nexuma. Your buddy! How are you?",
             r"tell me a joke|say something funny|joke": self.get_joke,
             r"weather in (.+)": self.get_weather,
             r"what's the time|tell me the time|what time is it|time": self.get_time,
